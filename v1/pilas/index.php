@@ -1,12 +1,14 @@
 <?php
-    //http://gobiernoabierto.valencia.es/wp-content/themes/viavansi-ogov/proxyFile.php?url=http://mapas.valencia.es/lanzadera/opendata/RES_PILAS/JSON
-    $fuente=file_get_contents("http://gobiernoabierto.valencia.es/wp-content/themes/viavansi-ogov/proxyFile.php?url=http://mapas.valencia.es/lanzadera/opendata/RES_PILAS/JSON");
-
-//print($fuente);
+    $latitud=$_GET["latitud"];
+    $longitud=$_GET["longitud"];
 
 
-    //$latitud=$_POST["latitud"];
-    //$longitud=$_POST["longitud"];
+    $fuente=file_get_contents("http://mapas.valencia.es/lanzadera/opendata/RES_PILAS/JSON");
+
+    print($fuente);
+
+
+
 
     $resultadoFiltrado=json_encode(json_encode($fuente));
     print($fuente);
