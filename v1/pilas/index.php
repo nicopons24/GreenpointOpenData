@@ -9,5 +9,4 @@
     //$longitud=$_POST["longitud"];
 
     $resultadoFiltrado=json_encode(json_encode($fuente));
-    print($resultadoFiltrado);
-?>
+    print($fuente);
