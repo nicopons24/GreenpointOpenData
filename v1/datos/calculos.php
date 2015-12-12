@@ -18,6 +18,13 @@ class Calculos
         return self::$instance;
     }
 
+    public function getJSONFromUrl($url) {
+        $fuente = file_get_contents($url);
+        $body = json_decode($fuente);
+
+        return $body->features;
+    }
+
     public function getDistance($latContenedor, $longCont1, $latUser, $longUser)
     {
         $earth_radius = 6371;
