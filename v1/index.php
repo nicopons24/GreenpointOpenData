@@ -1,6 +1,7 @@
 <?php
 
 require_once 'datos/calculos.php';
+require 'controladores/contenedores.php';
 require 'controladores/aceite.php';
 require 'controladores/pilas.php';
 require 'controladores/calles.php';
@@ -46,14 +47,13 @@ if (isset($_GET['PATH_INFO'])) {
     throw new ExcepcionApi(ESTADO_URL_INCORRECTA, utf8_encode("No se reconoce la petición"));
 // Obtener recurso
 $recurso = array_shift($peticion);
-$recursos_existentes = array('calles', 'aceite', 'pilas', 'papeleras');
+$recursos_existentes = array('calles', 'aceite', 'pilas', 'papeleras', 'contenedores');
 
 // Comprobar si existe el recurso
 if (!in_array($recurso, $recursos_existentes)) {
     throw new ExcepcionApi(ESTADO_EXISTENCIA_RECURSO, utf8_encode("El recurso al que intentas acceder no existe"));
 } else {
     if ($recurso != $recursos_existentes[0]) {
-
         // obtenemos el parametro latitud
         if (isset($_GET['lat']))
             $lat = $_GET['lat'];
@@ -70,9 +70,16 @@ if (!in_array($recurso, $recursos_existentes)) {
         else
             $dist = 200;
 
-        $peticion[0] = $lat;
-        $peticion[1] = $long;
-        $peticion[2] = $dist;
+        array_push($peticion, $lat);
+        array_push($peticion, $long);
+        array_push($peticion, $dist);
+        if ($recurso == $recursos_existentes[count($recursos_existentes) - 1]) {
+            if (isset($_GET['tipo'])) {
+                $tipo = $_GET['tipo'];
+                array_push($peticion, $tipo);
+            } else
+                throw new ExcepcionApi(ESTADO_URL_INCORRECTA, utf8_encode("falta el parametro tipo"));
+        }
     }
 }
 

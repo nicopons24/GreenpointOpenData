@@ -1,19 +1,25 @@
 <?php
 
+require_once '/../datos/ConexionBD.php';
+
 class calles {
 
     const URL = "http://mapas.valencia.es/lanzadera/opendata/vias/csv";
     const FINAL_FILA = "\n";
     const SEPARACION = ";";
 
-    const CODTIPOVIA = "0";
-    const CODVIA = "1";
-    const NOMOFICIAL = "3";
+    const CODTIPOVIA = 0;
+    const CODVIA = 1;
+    const NOMOFICIAL = 3;
+
+    const NOMBRE_TABLA = "calles";
+    const IDCALLE = "id_calle";
+    const NOMCALLE = "nombre";
 
     public static function get($parametros)
     {
-        $calles = self::obtenerCalles();
-        $listacalles = self::tipoCalles($calles);
+        $listaCalles = self::obtenerCalles();
+        return self::insertaDB($listaCalles);
     }
 
     private function obtenerCalles() {
@@ -22,21 +28,17 @@ class calles {
         $calles = array();
         for ($i = 1; $i < count($filas); $i++) {
             $calle = explode(self::SEPARACION, $filas[$i]);
-            array_push($calles, $calle);
-        }
-        return $calles;
-    }
-
-    private function tipoCalles($calles) {
-        for ($i = 1; $i < count($calles); $i++) {
-            $calle = $calles[$i];
 
             $codtipo = $calle[self::CODTIPOVIA];
             $idCalle = $calle[self::CODVIA];
-            $nombre = self::compruebaTipo($codtipo) . " " . $calle[self::NOMOFICIAL];
-            $c = new Calle($idCalle, $nombre);
-            print_r($c);
+            $nombre = self::compruebaTipo($codtipo) . " " . strtolower($calle[self::NOMOFICIAL]);
+            $c = [
+                "idCalle"=>$idCalle,
+                "nombre"=>$nombre
+            ];
+            array_push($calles, $c);
         }
+        return $calles;
     }
 
     private function compruebaTipo($codigo){
@@ -51,59 +53,26 @@ class calles {
             }
         }
     }
-}
 
-class Calle {
+    private function insertaDB($listacalles) {
+        $comando = "INSERT INTO " . self::NOMBRE_TABLA . " (" .
+            self::IDCALLE . ", " .
+            self::NOMCALLE . ")" .
+            " VALUES (?,?)";
+        $pdo = ConexionBD::obtenerInstancia()->obtenerBD();
+        $sentencia = $pdo->prepare($comando);
+        ini_set('max_execution_time', 300);
+        for ($i = 0; $i < count($listacalles) -1; $i++) {
+            $calle = $listacalles[$i];
 
-    var $idCalle;
-    var $nombre;
+            $id = $calle["idCalle"];
+            $nombre = $calle["nombre"];
 
-    /**
-     * Calle constructor.
-     * @param $idCalle
-     * @param $nombre
-     */
-    public function __construct($idCalle, $nombre)
-    {
-        $this->idCalle = $idCalle;
-        $this->nombre = $nombre;
-    }
+            $sentencia->bindParam(1, $id, PDO::PARAM_INT);
+            $sentencia->bindParam(2, $nombre);
 
-    /**
-     * @return mixed
-     */
-    public function getIdCalle()
-    {
-        return $this->idCalle;
-    }
-
-    /**
-     * @param mixed $idCalle
-     */
-    public function setIdCalle($idCalle)
-    {
-        $this->idCalle = $idCalle;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * @param mixed $nombre
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    }
-
-    public function __toString()
-    {
-        return "Id calle: " . $this->idCalle . "\n" .
-                "Nombre: " . $this->nombre . "\n";
+            $resultado = $sentencia->execute();
+        }
+        return $resultado;
     }
 }

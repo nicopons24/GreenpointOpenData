@@ -2,7 +2,7 @@
 
 class pilas
 {
-    const URL_ACEITE = "http://mapas.valencia.es/lanzadera/opendata/res_pilas/JSON";
+    const URL= "http://mapas.valencia.es/lanzadera/opendata/res_pilas/JSON";
     const TIPO = "pilas";
 
     public static function get($parametros)
@@ -10,7 +10,7 @@ class pilas
         $latUser = $parametros[0];
         $longUser = $parametros[1];
         $distancia = $parametros[2];
-        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_ACEITE);
+        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL);
         return [
             "contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
         ];
