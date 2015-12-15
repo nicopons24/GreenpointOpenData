@@ -4,13 +4,14 @@ require '/../datos/contenedor.php';
 class aceite
 {
     const URL_ACEITE = "http://mapas.valencia.es/lanzadera/opendata/res_aceite/JSON";
-    const TIPO = "aceite";
+    const TIPO = 5;
 
     public static function get($parametros)
     {
         $latUser = $parametros[0];
         $longUser = $parametros[1];
         $distancia = $parametros[2];
+
         $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_ACEITE);
         return [
             "contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
