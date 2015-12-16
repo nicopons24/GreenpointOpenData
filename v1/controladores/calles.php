@@ -1,7 +1,5 @@
 <?php
 
-require_once '/../datos/ConexionBD.php';
-
 class calles {
 
     const URL = "http://mapas.valencia.es/lanzadera/opendata/vias/csv";

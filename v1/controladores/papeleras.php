@@ -1,7 +1,5 @@
 <?php
 
-require '/../datos/papelera.php';
-
 class papeleras {
 
     const URL = "http://mapas.valencia.es/lanzadera/opendata/Res_papeleras/JSON";

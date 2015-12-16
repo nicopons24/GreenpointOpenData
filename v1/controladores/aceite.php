@@ -1,5 +1,4 @@
 <?php
-require '/../datos/contenedor.php';
 
 class aceite
 {

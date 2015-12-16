@@ -1,7 +1,5 @@
 <?php
 
-require_once '/../datos/ConexionBD.php';
-
 class contenedores
 {
 
