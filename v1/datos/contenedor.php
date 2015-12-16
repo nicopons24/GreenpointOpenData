@@ -5,7 +5,6 @@ class Contedor {
     var $id;
     var $tipo;
     var $direccion;
-    var $centro;
     var $lat;
     var $log;
 
@@ -18,12 +17,11 @@ class Contedor {
      * @param $lat
      * @param $log
      */
-    public function __construct($id, $tipo, $direccion, $centro, $lat, $log)
+    public function __construct($id, $tipo, $direccion, $lat, $log)
     {
         $this->id = $id;
         $this->tipo = $tipo;
         $this->direccion = $direccion;
-        $this->centro = $centro;
         $this->lat = $lat;
         $this->log = $log;
     }
@@ -74,22 +72,6 @@ class Contedor {
     public function setDireccion($direccion)
     {
         $this->direccion = $direccion;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCentro()
-    {
-        return $this->centro;
-    }
-
-    /**
-     * @param mixed $centro
-     */
-    public function setCentro($centro)
-    {
-        $this->centro = $centro;
     }
 
     /**

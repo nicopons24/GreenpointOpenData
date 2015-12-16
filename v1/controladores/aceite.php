@@ -22,13 +22,13 @@ class aceite
     {
         $contenedores = array();
         foreach ($array as $aceite) {
-            $id = $aceite->properties->id;
-            $direccion = $aceite->properties->direccion;
-            $centro = $aceite->properties->centro;
             $lat = $aceite->geometry->coordinates[1];
             $long = $aceite->geometry->coordinates[0];
-            $c = new Contedor($id, self::TIPO, $direccion, $centro, $lat, $long);
             if (($distance = Calculos::obtenerCalculos()->getDistance($lat, $long, $latUser, $longUser)) < $distancia) {
+                $id = $aceite->properties->id;
+                $direccion = $aceite->properties->direccion;
+                $centro = $aceite->properties->centro;
+                $c = new Contedor($id, self::TIPO, $direccion, $centro, $lat, $long);
                 array_push($contenedores, $c);
             }
         }

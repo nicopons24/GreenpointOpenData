@@ -3,7 +3,7 @@
 class pilas
 {
     const URL= "http://mapas.valencia.es/lanzadera/opendata/res_pilas/JSON";
-    const TIPO = "pilas";
+    const TIPO = 6;
 
     public static function get($parametros)
     {
@@ -20,13 +20,12 @@ class pilas
     {
         $contenedores = array();
         foreach ($array as $pilas) {
-            $id = $pilas->properties->id;
-            $direccion = $pilas->properties->direccion;
-            $centro = $pilas->properties->centro;
             $lat = $pilas->geometry->coordinates[1];
             $long = $pilas->geometry->coordinates[0];
-            $c = new Contedor($id, self::TIPO, $direccion, $centro, $lat, $long);
             if (($distance = Calculos::obtenerCalculos()->getDistance($lat, $long, $latUser, $longUser)) < $distancia) {
+                $id = $pilas->properties->id;
+                $direccion = $pilas->properties->direccion;
+                $c = new Contedor($id, self::TIPO, $direccion, $lat, $long);
                 array_push($contenedores, $c);
             }
         }
