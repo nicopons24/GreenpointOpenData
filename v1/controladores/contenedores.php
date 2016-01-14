@@ -29,13 +29,16 @@ class contenedores
         for ($i = 0; $i < count($array); $i++) {
             $contenedor = $array[$i];
             $idTipo = self::obtenerTipo($contenedor->properties->tipo);
+            echo    $idTipo."  ";
             if ($tipo == $idTipo) {
+                echo "  ".$idTipo;
                 $lat = $contenedor->geometry->coordinates[1];
                 $long = $contenedor->geometry->coordinates[0];
-                if (($distance = Calculos::obtenerCalculos()->getDistance($lat, $long, $latUser, $longUser)) < $distancia) {
+                $latlon=Calculos::coordenadas($lat,$long,30);
+                if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
                     $idContenedor = $i + 1;
                     $calle = self::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
-                    $c = new Contedor($idContenedor, $idTipo, $calle, $lat, $long);
+                    $c = new Contedor($idContenedor, $idTipo, $calle, $latlon['lat'], $latlon['lon']);
                     array_push($contenedores, $c);
                 }
             }
@@ -43,8 +46,7 @@ class contenedores
         return $contenedores;
     }
 
-    private
-    function obtenerTipo($tipo)
+    public function obtenerTipo($tipo)
     {
         $tipos = array('RESIDUOS URBANOS', 'CARTON', 'ENVASES', 'VIDRIO');
         $valor = array(self::ORGANICO, self::CARTON, self::PLASTICO, self::VIDRIO);

@@ -22,10 +22,11 @@ class pilas
         foreach ($array as $pilas) {
             $lat = $pilas->geometry->coordinates[1];
             $long = $pilas->geometry->coordinates[0];
-            if (($distance = Calculos::obtenerCalculos()->getDistance($lat, $long, $latUser, $longUser)) < $distancia) {
+            $latlon=Calculos::coordenadas($lat,$long,30);
+            if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
                 $id = $pilas->properties->id;
                 $direccion = $pilas->properties->direccion;
-                $c = new Contedor($id, self::TIPO, $direccion, $lat, $long);
+                $c = new Contedor($id, self::TIPO, $direccion, $latlon['lat'], $latlon['lon']);
                 array_push($contenedores, $c);
             }
         }
