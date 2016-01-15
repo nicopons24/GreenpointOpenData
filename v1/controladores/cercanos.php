@@ -49,7 +49,7 @@ class cercanos
 
         //contenedor pilas más cercano
         $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_pilas);
-        $containers = self::obtenerInformacionapilas($contenedores, $latUser, $longUser, $distancia);
+        $containers = self::obtenerInformacionaPilas($contenedores, $latUser, $longUser, $distancia);
         array_push($contenedorescercanos, $containers);
 
         return [
