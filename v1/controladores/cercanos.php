@@ -47,6 +47,11 @@ class cercanos
         $containers = self::obtenerInformacionPapeleras($contenedores, $latUser, $longUser, $distancia);
         array_push($contenedorescercanos, $containers);
 
+        //contenedor pilas más cercano
+        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_pilas);
+        $containers = self::obtenerInformacionaceite($contenedores, $latUser, $longUser, $distancia);
+        array_push($contenedorescercanos, $containers);
+
         return [
             //"contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
             "contenedores" => $contenedorescercanos
