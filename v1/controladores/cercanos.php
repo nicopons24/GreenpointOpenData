@@ -93,7 +93,7 @@ class cercanos
                 }
                 $idContenedor = $i + 1;
                 //contenedor tipo 1
-                if ($distance <= $u1 && $c1==null) {
+                if ($distance <= $u1 && $idTipo==self::ORGANICO) {
                     $u1 = $distance;
 
                     $calle = contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
@@ -101,7 +101,7 @@ class cercanos
 
                 }
                 //contenedor tipo 2
-                if ($distance <= $u2 && $c2==null) {
+                if ($distance <= $u2 && $idTipo==self::CARTON) {
                     $u2 = $distance;
 
                     $calle = contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
@@ -109,7 +109,7 @@ class cercanos
 
                 }
                 //contenedor tipo 3
-                if ($distance <= $u3 && $c3==null) {
+                if ($distance <= $u3 && $idTipo==self::PLASTICO) {
                     $u3 = $distance;
 
                     $calle = contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
@@ -117,7 +117,7 @@ class cercanos
 
                 }
                 //contenedor tipo 4
-                if ($distance <= $u4 && $c4==null) {
+                if ($distance <= $u4 && $idTipo==self::VIDRIO) {
                     $u4 = $distance;
 
                     $calle = contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);

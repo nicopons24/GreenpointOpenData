@@ -46,7 +46,7 @@ class contenedores
 
     public function obtenerTipo($tipo)
     {
-        $tipos = array('RESIDUOS URBANOS', 'CARTON', 'ENVASES', 'VIDRIO');
+        $tipos = array('RESIDUOS URBANOS', 'PAPEL CARTON', 'ENVASES LIGEROS', 'VIDRIO');
         $valor = array(self::ORGANICO, self::CARTON, self::PLASTICO, self::VIDRIO);
         for ($i = 0; $i < count($tipos); $i++) {
             if ($tipo == $tipos[$i]) {
