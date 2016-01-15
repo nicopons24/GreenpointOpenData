@@ -149,7 +149,7 @@ class cercanos
                 }
                 $id = $papeleras->properties->codigo;
                 if ($distance < $u5) {
-                    $p = new Papelera($id, self::ACEITE, $latlon['lat'], $latlon['lon']);
+                    $p = new Aceite($id, self::ACEITE, $latlon['lat'], $latlon['lon']);
                 }
             }
         }
