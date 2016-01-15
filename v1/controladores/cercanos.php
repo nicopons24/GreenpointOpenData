@@ -49,7 +49,7 @@ class cercanos
 
         //contenedor pilas más cercano
         $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_pilas);
-        $containers = self::obtenerInformacionaceite($contenedores, $latUser, $longUser, $distancia);
+        $containers = self::obtenerInformacionapilas($contenedores, $latUser, $longUser, $distancia);
         array_push($contenedorescercanos, $containers);
 
         return [
@@ -137,30 +137,31 @@ class cercanos
     function obtenerInformacionaceite($array, $latUser, $longUser, $distancia)
     {
         $u5 = null;
-        $p=null;
+        $p5=null;
         $contenedores = array();
-        foreach ($array as $papeleras) {
-            $lat = $papeleras->geometry->coordinates[1];
-            $long = $papeleras->geometry->coordinates[0];
+        foreach ($array as $aceite) {
+            $lat = $aceite->geometry->coordinates[1];
+            $long = $aceite->geometry->coordinates[0];
             $latlon=Calculos::coordenadas($lat,$long,30);
             if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
                 if ($u5 == null) {
                     $u5 = $distance;
                 }
-                $id = $papeleras->properties->codigo;
+                $direccion = $aceite->properties->direccion;
+                $id = $aceite->properties->codigo;
                 if ($distance < $u5) {
-                    $p = new Aceite($id, self::ACEITE, $latlon['lat'], $latlon['lon']);
+                    $p5 = new Contedor($id, self::ACEITE,$direccion, $latlon['lat'], $latlon['lon']);
                 }
             }
         }
-        array_push($contenedores, $p);
+        array_push($contenedores, $p5);
         return $contenedores;
     }
 
     function obtenerInformacionPapeleras($array, $latUser, $longUser, $distancia)
     {
         $u0 = null;
-        $p=null;
+        $p0=null;
         $contenedores = array();
         foreach ($array as $papeleras) {
             $lat = $papeleras->geometry->coordinates[1];
@@ -172,18 +173,18 @@ class cercanos
                 }
                 $id = $papeleras->properties->codigo;
                 if ($distance < $u0) {
-                    $p = new Papelera($id, self::PAPELERAS, $latlon['lat'], $latlon['lon']);
+                    $p0 = new Papelera($id, self::PAPELERAS, $latlon['lat'], $latlon['lon']);
                 }
             }
         }
-        array_push($contenedores, $p);
+        array_push($contenedores, $p0);
         return $contenedores;
     }
 
     function obtenerInformacionPilas($array, $latUser, $longUser, $distancia)
     {
         $u6 = null;
-        $p=null;
+        $p6=null;
         $contenedores = array();
         foreach ($array as $pilas) {
             $lat = $pilas->geometry->coordinates[1];
@@ -194,11 +195,11 @@ class cercanos
                 $id = $pilas->properties->id;
                 $direccion = $pilas->properties->direccion;
                 if (distance < $u6) {
-                    $p = new Contedor($id, self::PILAS, $direccion, $latlon['lat'], $latlon['lon']);
+                    $p6 = new Contedor($id, self::PILAS, $direccion, $latlon['lat'], $latlon['lon']);
                 }
             }
         }
-        array_push($contenedores, $p);
+        array_push($contenedores, $p6);
         return $contenedores;
     }
 }
