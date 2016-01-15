@@ -35,22 +35,25 @@ class cercanos
         //contenedor mas cercano de residuos urbanos , carton , envase , vidrio
         $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_contenedores);
         $containers = self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia);
-        array_push($contenedorescercanos, $containers);
+        array_push($contenedorescercanos, $containers[0]);
+        array_push($contenedorescercanos, $containers[1]);
+        array_push($contenedorescercanos, $containers[2]);
+        array_push($contenedorescercanos, $containers[3]);
 
         //contenedor mas dercano de aceite
         $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_aceite);
-        $containers = self::obtenerInformacionaceite($contenedores, $latUser, $longUser, $distancia);
-        array_push($contenedorescercanos, $containers);
+        $container = self::obtenerInformacionaceite($contenedores, $latUser, $longUser, $distancia);
+        array_push($contenedorescercanos, $container);
 
         //papelera más cercana
         $contenedores = calculos::obtenerCalculos()->getJSONFromUrl(self::URL_papeleras);
-        $containers = self::obtenerInformacionPapeleras($contenedores, $latUser, $longUser, $distancia);
-        array_push($contenedorescercanos, $containers);
+        $container = self::obtenerInformacionPapeleras($contenedores, $latUser, $longUser, $distancia);
+        array_push($contenedorescercanos, $container);
 
         //contenedor pilas más cercano
         $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_pilas);
-        $containers = self::obtenerInformacionPilas($contenedores, $latUser, $longUser, $distancia);
-        array_push($contenedorescercanos, $containers);
+        $container = self::obtenerInformacionPilas($contenedores, $latUser, $longUser, $distancia);
+        array_push($contenedorescercanos, $container);
 
         return [
             //"contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
@@ -136,7 +139,6 @@ class cercanos
     {
         $u5 = null;
         $p5=null;
-        $contenedores = array();
         foreach ($array as $aceite) {
             $lat = $aceite->geometry->coordinates[1];
             $long = $aceite->geometry->coordinates[0];
@@ -152,15 +154,14 @@ class cercanos
                 }
 
         }
-        array_push($contenedores, $p5);
-        return $contenedores;
+
+        return $p5;
     }
 
     function obtenerInformacionPapeleras($array, $latUser, $longUser, $distancia)
     {
         $u0 = null;
         $p0=null;
-        $contenedores = array();
         foreach ($array as $papeleras) {
             $lat = $papeleras->geometry->coordinates[1];
             $long = $papeleras->geometry->coordinates[0];
@@ -174,15 +175,13 @@ class cercanos
                     $p0 = new Contedor($id, self::PAPELERAS,"" ,$latlon['lat'], $latlon['lon']);
                 }
         }
-        array_push($contenedores, $p0);
-        return $contenedores;
+        return $p0;
     }
 
     function obtenerInformacionPilas($array, $latUser, $longUser, $distancia)
     {
         $u6 = null;
         $p6=null;
-        $contenedores = array();
         for($i=0;$i<count($array);$i++){
             $pilas=$array[$i];
             $lat = $pilas->geometry->coordinates[1];
@@ -196,7 +195,7 @@ class cercanos
                     $p6 = new Contedor($id, self::PILAS, $direccion, $latlon['lat'], $latlon['lon']);
                 }
         }
-        array_push($contenedores, $p6);
-        return $contenedores;
+
+        return $p6;
     }
 }
