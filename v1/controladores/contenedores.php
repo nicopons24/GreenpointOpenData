@@ -45,7 +45,7 @@ class contenedores
         return $contenedores;
     }
 
-    private
+    public static
     function obtenerTipo($tipo)
     {
         $tipos = array('RESIDUOS URBANOS', 'PAPEL CARTON', 'ENVASES LIGEROS', 'VIDRIO');
@@ -57,7 +57,7 @@ class contenedores
         }
     }
 
-    private
+    public static
     function obtenerDireccion($tipovia, $nomvia, $numportal)
     {
         $codigos = array('C.N.', 'C', 'AV', 'PLZ', 'PL', 'C.V.', 'PSO', 'G.V.', 'LUG',

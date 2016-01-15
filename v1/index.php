@@ -8,7 +8,6 @@ require 'controladores/calles.php';
 require 'controladores/papeleras.php';
 require 'controladores/cercanos.php';
 require 'datos/contenedor.php';
-require 'datos/papelera.php';
 require 'vistas/VistaJson.php';
 require 'vistas/VistaXML.php';
 require 'utilidades/ExcepcionApi.php';
