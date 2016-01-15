@@ -19,12 +19,13 @@ class pilas
     function obtenerInformacionContenedores($array, $latUser, $longUser, $distancia)
     {
         $contenedores = array();
-        foreach ($array as $pilas) {
+        for ($i = 0; $i < count($array); $i++) {
+            $pilas = $array[$i];
             $lat = $pilas->geometry->coordinates[1];
             $long = $pilas->geometry->coordinates[0];
-            $latlon=Calculos::coordenadas($lat,$long,30);
+            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
             if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
-                $id = $pilas->properties->id;
+                $id = $i + 1;
                 $direccion = $pilas->properties->direccion;
                 $c = new Contedor($id, self::TIPO, $direccion, $latlon['lat'], $latlon['lon']);
                 array_push($contenedores, $c);

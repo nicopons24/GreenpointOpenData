@@ -21,10 +21,10 @@ class papeleras {
         foreach ($array as $papeleras) {
             $lat = $papeleras->geometry->coordinates[1];
             $long = $papeleras->geometry->coordinates[0];
-            $latlon=Calculos::coordenadas($lat,$long,30);
+            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
             if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
-                $id = $papeleras->properties->codigo;
-                $p = new Papelera($id,self::TIPO, $latlon['lat'], $latlon['lon']);
+                $id = (int) $papeleras->properties->codigo;
+                $p = new Contedor($id,self::TIPO, "", $latlon['lat'], $latlon['lon']);
                 array_push($contenedores, $p);
             }
         }

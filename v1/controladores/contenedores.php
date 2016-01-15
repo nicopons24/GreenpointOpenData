@@ -32,7 +32,7 @@ class contenedores
             if ($tipo == $idTipo) {
                 $lat = $contenedor->geometry->coordinates[1];
                 $long = $contenedor->geometry->coordinates[0];
-                $latlon=Calculos::coordenadas($lat,$long,30);
+                $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
                 if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
                     $idContenedor = $i + 1;
                     $calle = self::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
@@ -40,11 +40,13 @@ class contenedores
                     array_push($contenedores, $c);
                 }
             }
+            $i++;
         }
         return $contenedores;
     }
 
-    public function obtenerTipo($tipo)
+    private
+    function obtenerTipo($tipo)
     {
         $tipos = array('RESIDUOS URBANOS', 'PAPEL CARTON', 'ENVASES LIGEROS', 'VIDRIO');
         $valor = array(self::ORGANICO, self::CARTON, self::PLASTICO, self::VIDRIO);
@@ -55,7 +57,8 @@ class contenedores
         }
     }
 
-    public function obtenerDireccion($tipovia, $nomvia, $numportal)
+    private
+    function obtenerDireccion($tipovia, $nomvia, $numportal)
     {
         $codigos = array('C.N.', 'C', 'AV', 'PLZ', 'PL', 'C.V.', 'PSO', 'G.V.', 'LUG',
             'BAR', 'SEN', 'SENDA', '', 'CTRA', 'CMNO', 'TRV', 'CRA', 'ENTRD',

@@ -27,8 +27,6 @@ class Calculos
 
     public function getDistance($latContenedor, $longCont1, $latUser, $longUser)
     {
-
-
         $earth_radius = 6371;
 
         $dLat = deg2rad($latUser - $latContenedor);

@@ -20,15 +20,15 @@ class aceite
     function obtenerInformacionContenedores($array, $latUser, $longUser, $distancia)
     {
         $contenedores = array();
-        foreach ($array as $aceite) {
+        for ($i = 0; $i < count($array); $i++) {
+            $aceite = $array[$i];
             $lat = $aceite->geometry->coordinates[1];
             $long = $aceite->geometry->coordinates[0];
-            $latlon=Calculos::coordenadas($lat,$long,30);
+            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
             if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
-                $id = $aceite->properties->id;
+                $id = $i + 1;
                 $direccion = $aceite->properties->direccion;
-                $centro = $aceite->properties->centro;
-                $c = new Contedor($id, self::TIPO, $direccion, $centro, $latlon['lat'], $latlon['lon']);
+                $c = new Contedor($id, self::TIPO, $direccion, $latlon['lat'], $latlon['lon']);
                 array_push($contenedores, $c);
             }
         }
