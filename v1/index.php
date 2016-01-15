@@ -56,7 +56,6 @@ $recursos_existentes = array('aceite', 'pilas', 'papeleras', 'contenedores','cer
 if (!in_array($recurso, $recursos_existentes)) {
     throw new ExcepcionApi(ESTADO_EXISTENCIA_RECURSO, utf8_encode("El recurso al que intentas acceder no existe"));
 } else {
-    if ($recurso != $recursos_existentes[0]) {
         // obtenemos el parametro latitud
         if (isset($_GET['lat']))
             $lat = $_GET['lat'];
@@ -76,14 +75,13 @@ if (!in_array($recurso, $recursos_existentes)) {
         array_push($peticion, $lat);
         array_push($peticion, $long);
         array_push($peticion, $dist);
-        if ($recurso == $recursos_existentes[count($recursos_existentes) - 1]) {
+        if ($recurso == $recursos_existentes[count($recursos_existentes) - 2]) {
             if (isset($_GET['tipo'])) {
                 $tipo = $_GET['tipo'];
                 array_push($peticion, $tipo);
             } else
                 throw new ExcepcionApi(ESTADO_URL_INCORRECTA, utf8_encode("falta el parametro tipo"));
         }
-    }
 }
 
 $metodo = strtolower($_SERVER['REQUEST_METHOD']);
