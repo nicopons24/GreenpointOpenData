@@ -29,9 +29,7 @@ class contenedores
         for ($i = 0; $i < count($array); $i++) {
             $contenedor = $array[$i];
             $idTipo = self::obtenerTipo($contenedor->properties->tipo);
-            echo    $idTipo."  ";
             if ($tipo == $idTipo) {
-                echo "  ".$idTipo;
                 $lat = $contenedor->geometry->coordinates[1];
                 $long = $contenedor->geometry->coordinates[0];
                 $latlon=Calculos::coordenadas($lat,$long,30);
@@ -57,8 +55,7 @@ class contenedores
         }
     }
 
-    private
-    function obtenerDireccion($tipovia, $nomvia, $numportal)
+    public function obtenerDireccion($tipovia, $nomvia, $numportal)
     {
         $codigos = array('C.N.', 'C', 'AV', 'PLZ', 'PL', 'C.V.', 'PSO', 'G.V.', 'LUG',
             'BAR', 'SEN', 'SENDA', '', 'CTRA', 'CMNO', 'TRV', 'CRA', 'ENTRD',
