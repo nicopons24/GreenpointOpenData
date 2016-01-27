@@ -40,7 +40,6 @@ class contenedores
                     array_push($contenedores, $c);
                 }
             }
-            $i++;
         }
         return $contenedores;
     }
