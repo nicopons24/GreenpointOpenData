@@ -8,20 +8,19 @@
  */
 class cercanos
 {
-    const URL_aceite = "http://mapas.valencia.es/lanzadera/opendata/res_aceite/JSON";
+    const URL_aceite = "C:/xampp/htdocs/GreenpointOpenData/v1/jsonaceite.json";
     const ACEITE = 5;
 
-    const URL_contenedores = "http://mapas.valencia.es/lanzadera/opendata/res_contenedor/JSON";
-
+    const URL_contenedores = "C:/xampp/htdocs/GreenpointOpenData/v1/jsoncontenedores.json";
     const ORGANICO = 1;
     const CARTON = 2;
     const PLASTICO = 3;
     const VIDRIO = 4;
 
-    const URL_papeleras = "http://mapas.valencia.es/lanzadera/opendata/res_papeleras/JSON";
+    const URL_papeleras = "C:/xampp/htdocs/GreenpointOpenData/v1/jsonpapeleras.json";
     const PAPELERAS = 0;
 
-    const URL_pilas = "http://mapas.valencia.es/lanzadera/opendata/res_pilas/JSON";
+    const URL_pilas = "C:/xampp/htdocs/GreenpointOpenData/v1/jsonpilas.json";
     const PILAS = 6;
 
     public static function get($parametros)
@@ -55,18 +54,26 @@ class cercanos
         array_push($contenedorescercanos, $container);
 
         return [
-            //"contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
             "contenedores" => $contenedorescercanos
         ];
 
     }
 
+    function error($tipoerror, $numero, $texto)
+    {
+        $ddf = fopen('error' . $tipoerror . '.log', 'a');
+        fwrite($ddf, " $numero: $texto\r\n");
+        fclose($ddf);
+    }
+    function escribir($nombrefichero,$contenido){
+        $fichero = fopen($nombrefichero.".json", 'w');
+        fwrite($fichero,json_encode($contenido,JSON_PRETTY_PRINT));
+
+        fclose($fichero);
+    }
+
     private function obtenerInformacionContenedores($array, $latUser, $longUser)
     {
-        $id1 = null;
-        $id2 = null;
-        $id3 = null;
-        $id4 = null;
         $c1 = null;
         $c2 = null;
         $c3 = null;
@@ -76,84 +83,76 @@ class cercanos
         $u3 = null;
         $u4 = null;
         $contenedores = array();
+        for ($i = 0; $i < count($array); $i++) {
 
-        //blucle tipo 1
-        for ($i = 0; $i < count($array); $i++) {
+            //blucle tipo 1
             $contenedor = $array[$i];
-            $idTipo = contenedores::obtenerTipo($contenedor->properties->tipo);
-            if ($idTipo == self::ORGANICO) {
-                $lat = $contenedor->geometry->coordinates[1];
-                $long = $contenedor->geometry->coordinates[0];
-                $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-                $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
-                if ($u1 == null) {
-                    $u1 = $distance;
-                }
-                if ($distance <= $u1) {
-                    $u1 = $distance;
-                    $id1= $i+1;
-                    $calle = Contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
-                    $c1 = new Contedor($id1, self::ORGANICO, $calle, $latlon['lat'], $latlon['lon']);
-                }
+            $lat = $contenedor->lat;
+            $long = $contenedor->log;
+            $distance = Calculos::obtenerCalculos()->getDistance($lat,$long, $latUser, $longUser);
+            if ($u1 == null) {
+                $u1 = $distance;
             }
-        }
-        //blucle tipo 2
-        for ($i = 0; $i < count($array); $i++) {
-            $contenedor = $array[$i];
-            $idTipo = contenedores::obtenerTipo($contenedor->properties->tipo);
-            if ($idTipo == self::CARTON) {
-                $lat = $contenedor->geometry->coordinates[1];
-                $long = $contenedor->geometry->coordinates[0];
-                $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-                $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
-                if ($u2 == null) {
-                    $u2 = $distance;
-                }
-                if ($distance <= $u2) {
-                    $u2 = $distance;
-                    $id2=$i+2;
-                    $calle = Contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
-                    $c2 = new Contedor($id2, self::ORGANICO, $calle, $latlon['lat'], $latlon['lon']);
-                }
+            if ($u2 == null) {
+                $u2 = $distance;
             }
-        }
-        //blucle tipo 3
-        for ($i = 0; $i < count($array); $i++) {
-            $contenedor = $array[$i];
-            $idTipo = contenedores::obtenerTipo($contenedor->properties->tipo);
-            if ($idTipo == self::PLASTICO) {
-                $lat = $contenedor->geometry->coordinates[1];
-                $long = $contenedor->geometry->coordinates[0];
-                $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-                $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
-                if ($u3 == null) {
-                    $u3 = $distance;
-                }
-                if ($distance <= $u3) {
-                    $u3 = $distance;
-                    $id3=$i+1;
-                    $calle = Contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
-                    $c3 = new Contedor($id3, self::ORGANICO, $calle, $latlon['lat'], $latlon['lon']);
-                }
+            if ($u3 == null) {
+                $u3 = $distance;
             }
-        }
-        //blucle tipo 4
-        for ($i = 0; $i < count($array); $i++) {
-            $contenedor = $array[$i];
-            $idTipo = contenedores::obtenerTipo($contenedor->properties->tipo);
-            if ($idTipo == self::VIDRIO) {
-                $lat = $contenedor->geometry->coordinates[1];
-                $long = $contenedor->geometry->coordinates[0];
-                $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-                $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
-                if ($u4 == null) {
-                    $u4 = $distance;
+            if ($u4 == null) {
+                $u4 = $distance;
+            }
+            $idTipo = $contenedor->tipo;
+
+            if (Calculos::obtenerCalculos()->comparaCoordenates(array($lat, $long, $idTipo))) {
+
+                if ($idTipo == self::ORGANICO) {
+                    if ($distance <= $u1) {
+                        $u1 = $distance;
+                        $calle = $contenedor->direccion;
+                        $c1 = new Contedor($i, self::ORGANICO, $calle, $lat,$long);
+                    }
                 }
-                if ($distance <= $u4) {
-                    $u4 = $distance;
-                    $id4=$i+4;
-                    $calle = Contenedores::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
-                    $c4 = new Contedor($id4, self::ORGANICO, $calle, $latlon['lat'], $latlon['lon']);
+
+
+                //blucle tipo 2
+
+                if ($idTipo == self::CARTON) {
+
+                    if ($distance <= $u2) {
+                        $u2 = $distance;
+                        $calle = $contenedor->direccion;
+                        $c2 = new Contedor($i, self::CARTON, $calle,$lat,$long);
+                    }
+
+                }
+
+                //blucle tipo 3
+
+                if ($idTipo == self::PLASTICO) {
+
+                    if ($u3 == null) {
+                        $u3 = $distance;
+                    }
+
+                    if ($distance <= $u3) {
+                        $u3 = $distance;
+                        $calle = $contenedor->direccion;
+                        $c3 = new Contedor($i, self::PLASTICO, $calle, $lat,$long);
+                    }
+                }
+
+                //blucle tipo 4
+
+                if ($idTipo == self::VIDRIO) {
+                    if ($u4 == null) {
+                        $u4 = $distance;
+                    }
+                    if ($distance <= $u4) {
+                        $u4 = $distance;
+                        $calle = $contenedor->direccion;
+                        $c4 = new Contedor($i, self::VIDRIO, $calle, $lat,$long);
+                    }
                 }
             }
         }
@@ -165,33 +164,24 @@ class cercanos
         array_push($contenedores, $c4);
         return $contenedores;
     }
-    function error($tipoerror,$numero,$texto){
-        $ddf = fopen('error'.$tipoerror.'.log','a');
-        fwrite($ddf,"Error $numero: $texto\r\n");
-        fclose($ddf);
-    }
+
+    private
     function obtenerInformacionaceite($array, $latUser, $longUser)
     {
         $u5 = -1;
         $p5 = null;
         for ($i = 0; $i < count($array); $i++) {
             $aceite = $array[$i];
-            $lat = $aceite->geometry->coordinates[1];
-            $long = $aceite->geometry->coordinates[0];
-            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-            $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
-            //self::error(5,0,$distance);
-            //self::error(5,9,$u5);
+            $lat = $aceite->lat;
+            $long = $aceite->log;
+            $distance = Calculos::obtenerCalculos()->getDistance($lat,$long, $latUser, $longUser);
             if ($u5 < 0) {
                 $u5 = $distance;
-                //self::error(5,1,"distancia $distance asignada a u5");
             }
-            $direccion = $aceite->properties->direccion;
-            //$id = $aceite->properties->codigo;
+            $direccion = $aceite->direccion;
             $id = $i + 1;
             if ($distance <= $u5) {
-                $p5 = new Contedor($id, self::ACEITE, $direccion, $latlon['lat'], $latlon['lon']);
-                //self::error(5,2,"objeto $id, distancia $u5/$distance asignado con [".$latlon['lat']." - ".$latlon['lon']."]");
+                $p5 = new Contedor($id, self::ACEITE, $direccion, $lat,$long);
             }
         }
         return $p5;
@@ -202,21 +192,16 @@ class cercanos
         $u0 = -1;
         $p0 = null;
         foreach ($array as $papeleras) {
-            $lat = $papeleras->geometry->coordinates[1];
-            $long = $papeleras->geometry->coordinates[0];
-            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-            $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
-            //self::error(0,0,$distance);
-            //self::error(0,9,$u0);
+            $lat = $papeleras->lat;
+            $long = $papeleras->log;
+            $distance = Calculos::obtenerCalculos()->getDistance($lat,$long, $latUser, $longUser);
             if ($u0 < 0) {
                 $u0 = $distance;
-                //self::error(0,1,"distancia $distance asignada a u0 - $u0");
             }
-            $id =(int) $papeleras->properties->codigo;
+            $id = (int)$papeleras->id;
             if ($distance <= $u0) {
-                $u0=$distance;
-                $p0 = new Contedor($id, self::PAPELERAS, "", $latlon['lat'], $latlon['lon']);
-                //self::error(0,2,"objeto $id, distancia guardada $u0/ distancia nueva $distance asignado con [".$latlon['lat']." - ".$latlon['lon']."]");
+                $u0 = $distance;
+                $p0 = new Contedor($id, self::PAPELERAS, "", $lat,$long);
             }
         }
         return $p0;
@@ -228,18 +213,17 @@ class cercanos
         $p6 = null;
         for ($i = 0; $i < count($array); $i++) {
             $pilas = $array[$i];
-            $lat = $pilas->geometry->coordinates[1];
-            $long = $pilas->geometry->coordinates[0];
-            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-            $distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser);
+            $lat = $pilas->lat;
+            $long = $pilas->log;
+            $distance = Calculos::obtenerCalculos()->getDistance($lat,$long, $latUser, $longUser);
             if ($u6 == null) {
                 $u6 = $distance;
             }
             $id = $i + 1;
-            $direccion = $pilas->properties->direccion;
+            $direccion = $pilas->direccion;
             if ($distance < $u6) {
-                $u6=$distance;
-                $p6 = new Contedor($id, self::PILAS, $direccion, $latlon['lat'], $latlon['lon']);
+                $u6 = $distance;
+                $p6 = new Contedor($id, self::PILAS, $direccion, $lat,$long);
             }
         }
 

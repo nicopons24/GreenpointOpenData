@@ -3,6 +3,20 @@
 class Calculos
 {
     private static $instance = null;
+    var $coordenatesContenedores=array();
+
+    /**
+     * @return array
+     */
+    public function getCoordenatesContenedores()
+    {
+        return $this->coordenatesContenedores;
+    }
+
+    public function resetCoordenatesContenedores()
+    {
+        $this->coordenatesContenedores = array();
+    }
 
     final private function __construct()
     {
@@ -22,6 +36,11 @@ class Calculos
         $fuente = file_get_contents($url);
         $body = json_decode($fuente);
 
+        return $body;
+    }
+    public function getJSONFromUrlGestor($url) {
+        $fuente = file_get_contents($url);
+        $body = json_decode($fuente);
         return $body->features;
     }
 
@@ -106,5 +125,14 @@ class Calculos
 
         // Returns a PC_LatLon object
         return $PC_LatLon;
+    }
+
+    public function comparaCoordenates($coordenates){
+        ini_set('max_execution_time', 3000);
+        if(in_array($coordenates,$this->coordenatesContenedores)) {
+            return false;
+        }
+        array_push($this->coordenatesContenedores,$coordenates);
+        return true;
     }
 }

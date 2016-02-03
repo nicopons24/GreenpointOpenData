@@ -2,14 +2,15 @@
 
 class papeleras {
 
-    const URL = "http://mapas.valencia.es/lanzadera/opendata/Res_papeleras/JSON";
+
+    const URL_papeleras = "C:/xampp/htdocs/GreenpointOpenData/v1/jsonpapeleras.json";
     const TIPO = 0;
 
     public static function get($parametros){
         $latUser = $parametros[0];
         $longUser = $parametros[1];
         $distancia = $parametros[2];
-        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL);
+        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_papeleras);
         return [
             "contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
         ];
@@ -19,12 +20,11 @@ class papeleras {
     {
         $contenedores = array();
         foreach ($array as $papeleras) {
-            $lat = $papeleras->geometry->coordinates[1];
-            $long = $papeleras->geometry->coordinates[0];
-            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-            if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
-                $id = (int) $papeleras->properties->codigo;
-                $p = new Contedor($id,self::TIPO, "", $latlon['lat'], $latlon['lon']);
+            $lat = $papeleras->lat;
+            $long = $papeleras->log;
+            if (($distance = Calculos::obtenerCalculos()->getDistance($lat,$long, $latUser, $longUser)) < $distancia) {
+                $id = (int) $papeleras->id;
+                $p = new Contedor($id,self::TIPO, "", $lat,$long);
                 array_push($contenedores, $p);
             }
         }

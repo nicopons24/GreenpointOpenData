@@ -1,0 +1,723 @@
+[
+    {
+        "id": 1,
+        "tipo": 5,
+        "direccion": "Micalet, 1",
+        "lat": 39.475478780803,
+        "log": -0.3756469855984
+    },
+    {
+        "id": 2,
+        "tipo": 5,
+        "direccion": "Amadeo de Saboya, 11",
+        "lat": 39.473568220056,
+        "log": -0.36117479445528
+    },
+    {
+        "id": 3,
+        "tipo": 5,
+        "direccion": "Amadeo de Saboya, 11",
+        "lat": 39.473949824034,
+        "log": -0.36231269160752
+    },
+    {
+        "id": 4,
+        "tipo": 5,
+        "direccion": "Los Leones, 9",
+        "lat": 39.465385665173,
+        "log": -0.34860884951117
+    },
+    {
+        "id": 5,
+        "tipo": 5,
+        "direccion": "Av. Baleares, 36",
+        "lat": 39.461040467047,
+        "log": -0.3520104180132
+    },
+    {
+        "id": 6,
+        "tipo": 5,
+        "direccion": "Camino Borboto a Massarrojos",
+        "lat": 39.518600180396,
+        "log": -0.38986424753588
+    },
+    {
+        "id": 7,
+        "tipo": 5,
+        "direccion": "Plaza Mercado",
+        "lat": 39.473676739199,
+        "log": -0.37846100323508
+    },
+    {
+        "id": 8,
+        "tipo": 5,
+        "direccion": "Entrada por Plaza Baron de Cortes",
+        "lat": 39.461783558624,
+        "log": -0.37166229112855
+    },
+    {
+        "id": 9,
+        "tipo": 5,
+        "direccion": "Botanico",
+        "lat": 39.472912168376,
+        "log": -0.38526154812743
+    },
+    {
+        "id": 10,
+        "tipo": 5,
+        "direccion": "Matematico Marzal",
+        "lat": 39.466556398579,
+        "log": -0.38054322270889
+    },
+    {
+        "id": 11,
+        "tipo": 5,
+        "direccion": "Jose Maestre",
+        "lat": 39.465357756542,
+        "log": -0.40336107176599
+    },
+    {
+        "id": 12,
+        "tipo": 5,
+        "direccion": "Santiago Suarez",
+        "lat": 39.452269079783,
+        "log": -0.3875511871063
+    },
+    {
+        "id": 13,
+        "tipo": 5,
+        "direccion": "Plaza San Felipe Neri",
+        "lat": 39.469927614388,
+        "log": -0.35348243396061
+    },
+    {
+        "id": 14,
+        "tipo": 5,
+        "direccion": "Santo Domingo Savio",
+        "lat": 39.497431002362,
+        "log": -0.37577390643778
+    },
+    {
+        "id": 15,
+        "tipo": 5,
+        "direccion": "Miguel Servet",
+        "lat": 39.488525230029,
+        "log": -0.39418298567409
+    },
+    {
+        "id": 16,
+        "tipo": 5,
+        "direccion": "Plaza Alborache",
+        "lat": 39.498816698578,
+        "log": -0.41797971907931
+    },
+    {
+        "id": 17,
+        "tipo": 5,
+        "direccion": "Plaza Mercado Nuevo",
+        "lat": 39.461184776863,
+        "log": -0.33485783633257
+    },
+    {
+        "id": 18,
+        "tipo": 5,
+        "direccion": "Justo Vilar",
+        "lat": 39.467448520733,
+        "log": -0.33323964637578
+    },
+    {
+        "id": 19,
+        "tipo": 5,
+        "direccion": "Cuba, 62",
+        "lat": 39.45921144637,
+        "log": -0.37527263832589
+    },
+    {
+        "id": 20,
+        "tipo": 5,
+        "direccion": "Historiador Diago, 6-8",
+        "lat": 39.467483341659,
+        "log": -0.3837849157494
+    },
+    {
+        "id": 21,
+        "tipo": 5,
+        "direccion": "Burgos, S\/N",
+        "lat": 39.470029264269,
+        "log": -0.39906619751766
+    },
+    {
+        "id": 22,
+        "tipo": 5,
+        "direccion": "Musico Ayllon, S\/N",
+        "lat": 39.465762657882,
+        "log": -0.39690095803391
+    },
+    {
+        "id": 23,
+        "tipo": 5,
+        "direccion": "Virgen de la Fuensanta, S\/N",
+        "lat": 39.466420667695,
+        "log": -0.40722011038703
+    },
+    {
+        "id": 24,
+        "tipo": 5,
+        "direccion": "Santiago de Les, 1",
+        "lat": 39.467777035058,
+        "log": -0.41284049915664
+    },
+    {
+        "id": 25,
+        "tipo": 5,
+        "direccion": "Salabert, 13ac",
+        "lat": 39.462774221219,
+        "log": -0.39429896173358
+    },
+    {
+        "id": 26,
+        "tipo": 5,
+        "direccion": "Escultor Vicente Rodilla, 3",
+        "lat": 39.457873780491,
+        "log": -0.3906444998845
+    },
+    {
+        "id": 27,
+        "tipo": 5,
+        "direccion": "Jose Andreu Alabarta, s\/n",
+        "lat": 39.453058350409,
+        "log": -0.40506381038276
+    },
+    {
+        "id": 28,
+        "tipo": 5,
+        "direccion": "Juan de Garay, 52",
+        "lat": 39.454932481627,
+        "log": -0.39552810017995
+    },
+    {
+        "id": 29,
+        "tipo": 5,
+        "direccion": "Av. Giorgeta, 18",
+        "lat": 39.460297222305,
+        "log": -0.38586459311385
+    },
+    {
+        "id": 30,
+        "tipo": 5,
+        "direccion": "Tomas de Villarroya, 17 Bjo",
+        "lat": 39.447472025999,
+        "log": -0.38814012603642
+    },
+    {
+        "id": 31,
+        "tipo": 5,
+        "direccion": "Salvador Perles",
+        "lat": 39.44263537273,
+        "log": -0.38979926335305
+    },
+    {
+        "id": 32,
+        "tipo": 5,
+        "direccion": "Rio Cabriel, 2 Bjo.",
+        "lat": 39.432602422778,
+        "log": -0.37492898267543
+    },
+    {
+        "id": 33,
+        "tipo": 5,
+        "direccion": "Poetisa Leonor Perales",
+        "lat": 39.428273480851,
+        "log": -0.36312479247674
+    },
+    {
+        "id": 34,
+        "tipo": 5,
+        "direccion": "Travesia Pinedo al Mar, 33",
+        "lat": 39.421576157435,
+        "log": -0.33680783230664
+    },
+    {
+        "id": 35,
+        "tipo": 5,
+        "direccion": "Benidoleig",
+        "lat": 39.434425626065,
+        "log": -0.39317470277231
+    },
+    {
+        "id": 36,
+        "tipo": 5,
+        "direccion": "Dragaminas, 11",
+        "lat": 39.481084620558,
+        "log": -0.3969761436282
+    },
+    {
+        "id": 37,
+        "tipo": 5,
+        "direccion": "Falucho, s\/n.",
+        "lat": 39.483871090573,
+        "log": -0.38675453325879
+    },
+    {
+        "id": 38,
+        "tipo": 5,
+        "direccion": "Av. General Aviles, 19",
+        "lat": 39.48692880821,
+        "log": -0.3928024115446
+    },
+    {
+        "id": 39,
+        "tipo": 5,
+        "direccion": "Convento  Carmelitas, 1",
+        "lat": 39.483584739838,
+        "log": -0.37167443132688
+    },
+    {
+        "id": 40,
+        "tipo": 5,
+        "direccion": "Plaza de Avila, 17",
+        "lat": 39.481266137987,
+        "log": -0.36983576089849
+    },
+    {
+        "id": 41,
+        "tipo": 5,
+        "direccion": "Trafalgar, 34",
+        "lat": 39.461346863351,
+        "log": -0.34512833087396
+    },
+    {
+        "id": 42,
+        "tipo": 5,
+        "direccion": "Yecla, 12",
+        "lat": 39.472607249993,
+        "log": -0.34993039144644
+    },
+    {
+        "id": 43,
+        "tipo": 5,
+        "direccion": "Paseo Facultades, 8 B",
+        "lat": 39.47759143545,
+        "log": -0.34738510166201
+    },
+    {
+        "id": 44,
+        "tipo": 5,
+        "direccion": "Utiel, 22",
+        "lat": 39.485599018515,
+        "log": -0.35855971412305
+    },
+    {
+        "id": 45,
+        "tipo": 5,
+        "direccion": "San Juan de La Pe\u00b1a, 3",
+        "lat": 39.496147847517,
+        "log": -0.37057722506398
+    },
+    {
+        "id": 46,
+        "tipo": 5,
+        "direccion": "Emilio Baro, 87",
+        "lat": 39.492570444905,
+        "log": -0.35858628628198
+    },
+    {
+        "id": 47,
+        "tipo": 5,
+        "direccion": "Azagador de Alboraya, 20",
+        "lat": 39.489353908287,
+        "log": -0.36282252134013
+    },
+    {
+        "id": 48,
+        "tipo": 5,
+        "direccion": "Luis Braille, s\/n.",
+        "lat": 39.496130871955,
+        "log": -0.39558763199805
+    },
+    {
+        "id": 49,
+        "tipo": 5,
+        "direccion": "Plaza Luis Cano",
+        "lat": 39.501523512131,
+        "log": -0.41805251973019
+    },
+    {
+        "id": 50,
+        "tipo": 5,
+        "direccion": "Favanella, s\/n",
+        "lat": 39.492879761483,
+        "log": -0.40716324941207
+    },
+    {
+        "id": 51,
+        "tipo": 5,
+        "direccion": "Juan Ramon Jimenez, 18",
+        "lat": 39.454892738086,
+        "log": -0.3764494825639
+    },
+    {
+        "id": 52,
+        "tipo": 5,
+        "direccion": "Severiano Goig",
+        "lat": 39.454652687083,
+        "log": -0.36340604432707
+    },
+    {
+        "id": 53,
+        "tipo": 5,
+        "direccion": "Doctor Lluch, fte 75",
+        "lat": 39.46668998601,
+        "log": -0.32828798014013
+    },
+    {
+        "id": 54,
+        "tipo": 5,
+        "direccion": "Plaza Aras de los Olmos",
+        "lat": 39.44845415741,
+        "log": -0.33333908784347
+    },
+    {
+        "id": 55,
+        "tipo": 5,
+        "direccion": "Camino Viejo de Chirivella, 1",
+        "lat": 39.472613180979,
+        "log": -0.40842102520181
+    },
+    {
+        "id": 56,
+        "tipo": 5,
+        "direccion": "Beneficencia, 20",
+        "lat": 39.479549686235,
+        "log": -0.3818207193832
+    },
+    {
+        "id": 57,
+        "tipo": 5,
+        "direccion": "San Pablo, 4 (punto ubicado en Av. Marques de Sotelo, 9 )",
+        "lat": 39.468004333825,
+        "log": -0.37730108711971
+    },
+    {
+        "id": 58,
+        "tipo": 5,
+        "direccion": "Salamaca, 45",
+        "lat": 39.464732057895,
+        "log": -0.36310816790319
+    },
+    {
+        "id": 59,
+        "tipo": 5,
+        "direccion": "Guillem de Castro, 161",
+        "lat": 39.477884387251,
+        "log": -0.38388674842643
+    },
+    {
+        "id": 60,
+        "tipo": 5,
+        "direccion": "G.V. Fernando el Catolico, 37",
+        "lat": 39.472559211267,
+        "log": -0.38712180788696
+    },
+    {
+        "id": 61,
+        "tipo": 5,
+        "direccion": "Maestro Guerrero, 3",
+        "lat": 39.473286804102,
+        "log": -0.39258977601295
+    },
+    {
+        "id": 62,
+        "tipo": 5,
+        "direccion": "Av. del Cid, 142",
+        "lat": 39.469444607798,
+        "log": -0.40233428511124
+    },
+    {
+        "id": 63,
+        "tipo": 5,
+        "direccion": "Beethoven, s\/n",
+        "lat": 39.450136993174,
+        "log": -0.39001815262079
+    },
+    {
+        "id": 64,
+        "tipo": 5,
+        "direccion": "Pio IX, s\/n",
+        "lat": 39.443087287131,
+        "log": -0.394013659636
+    },
+    {
+        "id": 65,
+        "tipo": 5,
+        "direccion": "Doctor Oloriz, 28-bjo",
+        "lat": 39.484444700693,
+        "log": -0.38071435621233
+    },
+    {
+        "id": 66,
+        "tipo": 5,
+        "direccion": "Convento Carmelitas, 13",
+        "lat": 39.483059626485,
+        "log": -0.36981056874081
+    },
+    {
+        "id": 67,
+        "tipo": 5,
+        "direccion": "AV. Menendez y Pelayo, 10",
+        "lat": 39.478726824016,
+        "log": -0.35941732500171
+    },
+    {
+        "id": 68,
+        "tipo": 5,
+        "direccion": "Plaza Jose Maria Orense, 6",
+        "lat": 39.473272282309,
+        "log": -0.34025710437923
+    },
+    {
+        "id": 69,
+        "tipo": 5,
+        "direccion": "Seneca, 13",
+        "lat": 39.472097827334,
+        "log": -0.35035521241352
+    },
+    {
+        "id": 70,
+        "tipo": 5,
+        "direccion": "Poeta Artola, s\/n",
+        "lat": 39.475236852121,
+        "log": -0.34942757450451
+    },
+    {
+        "id": 71,
+        "tipo": 5,
+        "direccion": "Albalat dels Tarongers, s\/n",
+        "lat": 39.476494407339,
+        "log": -0.34012746848273
+    },
+    {
+        "id": 72,
+        "tipo": 5,
+        "direccion": "Arquitecto Arnau, s\/n",
+        "lat": 39.486789718721,
+        "log": -0.35597023837174
+    },
+    {
+        "id": 73,
+        "tipo": 5,
+        "direccion": "Alemany, 39",
+        "lat": 39.496748716093,
+        "log": -0.37998473461598
+    },
+    {
+        "id": 74,
+        "tipo": 5,
+        "direccion": "Esteban Dolz del Castellar, s\/n",
+        "lat": 39.494460714884,
+        "log": -0.36698792369603
+    },
+    {
+        "id": 75,
+        "tipo": 5,
+        "direccion": "Rafael Tenes Escrich, 56",
+        "lat": 39.500412070345,
+        "log": -0.41313431087802
+    },
+    {
+        "id": 76,
+        "tipo": 5,
+        "direccion": "Cura Palanca, 27",
+        "lat": 39.444440741101,
+        "log": -0.36552437950161
+    },
+    {
+        "id": 77,
+        "tipo": 5,
+        "direccion": "Cineasta Ricardo Mu\u00f1oz Suay, s\/n",
+        "lat": 39.45246403792,
+        "log": -0.35884252736952
+    },
+    {
+        "id": 78,
+        "tipo": 5,
+        "direccion": "Jose Aguirre, 33",
+        "lat": 39.461753743876,
+        "log": -0.33403233608415
+    },
+    {
+        "id": 79,
+        "tipo": 5,
+        "direccion": "Amadis de Gaula, s\/n",
+        "lat": 39.474079958718,
+        "log": -0.33567932125054
+    },
+    {
+        "id": 80,
+        "tipo": 5,
+        "direccion": "Valle de la Ballestera 66",
+        "lat": 39.478835873555,
+        "log": -0.40615288336604
+    },
+    {
+        "id": 81,
+        "tipo": 5,
+        "direccion": "Asturias, jto 22",
+        "lat": 39.464951540773,
+        "log": -0.35588585371605
+    },
+    {
+        "id": 82,
+        "tipo": 5,
+        "direccion": "Campoamor, 91",
+        "lat": 39.469169491514,
+        "log": -0.34035988898756
+    },
+    {
+        "id": 83,
+        "tipo": 5,
+        "direccion": "Daniel de Balaciart, 8",
+        "lat": 39.480858081195,
+        "log": -0.35479161203973
+    },
+    {
+        "id": 84,
+        "tipo": 5,
+        "direccion": "Camino Alqueria de la Morera, s\/n",
+        "lat": 39.454883606455,
+        "log": -0.40894603435865
+    },
+    {
+        "id": 85,
+        "tipo": 5,
+        "direccion": "Guadalquivir, 15",
+        "lat": 39.432514678998,
+        "log": -0.37613696340659
+    },
+    {
+        "id": 86,
+        "tipo": 5,
+        "direccion": "Carretera del Rio, 263",
+        "lat": 39.424278888565,
+        "log": -0.34080958069878
+    },
+    {
+        "id": 87,
+        "tipo": 5,
+        "direccion": "Av. de los Pinares, 1",
+        "lat": 39.382217493915,
+        "log": -0.33187273454818
+    },
+    {
+        "id": 88,
+        "tipo": 5,
+        "direccion": "Caudete, 15",
+        "lat": 39.3093020854,
+        "log": -0.31765654604979
+    },
+    {
+        "id": 89,
+        "tipo": 5,
+        "direccion": "Av. Gaviotas, S\/N",
+        "lat": 39.297830424812,
+        "log": -0.28884155338678
+    },
+    {
+        "id": 90,
+        "tipo": 5,
+        "direccion": "Ferrer y Bigne, 47",
+        "lat": 39.528787000844,
+        "log": -0.38578261996037
+    },
+    {
+        "id": 91,
+        "tipo": 5,
+        "direccion": "Camino de Moncada, 205",
+        "lat": 39.504165381275,
+        "log": -0.38403795109724
+    },
+    {
+        "id": 92,
+        "tipo": 5,
+        "direccion": "Vicente Gil y Ros, 1",
+        "lat": 39.516758233617,
+        "log": -0.37961409200288
+    },
+    {
+        "id": 93,
+        "tipo": 5,
+        "direccion": "Camino Casas de Barcena,108",
+        "lat": 39.523179851302,
+        "log": -0.3565641189005
+    },
+    {
+        "id": 94,
+        "tipo": 5,
+        "direccion": "Cura Bau, 12 B",
+        "lat": 39.539483065562,
+        "log": -0.40391780379379
+    },
+    {
+        "id": 95,
+        "tipo": 5,
+        "direccion": "Jesus Morante i Borras, 176",
+        "lat": 39.442479249416,
+        "log": -0.34392141870171
+    },
+    {
+        "id": 96,
+        "tipo": 5,
+        "direccion": "Jardines del Turia-  entre el Paseo de la Pechina y Avda. Manuel de Falla",
+        "lat": 39.47516443884,
+        "log": -0.39774514520071
+    },
+    {
+        "id": 97,
+        "tipo": 5,
+        "direccion": "Antonio Suarez, 7",
+        "lat": 39.468561524429,
+        "log": -0.35792229447575
+    },
+    {
+        "id": 98,
+        "tipo": 5,
+        "direccion": "Luis Lamarca, 15",
+        "lat": 39.470734839053,
+        "log": -0.40087147902067
+    },
+    {
+        "id": 99,
+        "tipo": 5,
+        "direccion": "Roncesvalles, 8",
+        "lat": 39.486698805548,
+        "log": -0.37348430936972
+    },
+    {
+        "id": 100,
+        "tipo": 5,
+        "direccion": "Musico Gines, 21",
+        "lat": 39.470571562342,
+        "log": -0.34332408524634
+    },
+    {
+        "id": 101,
+        "tipo": 5,
+        "direccion": "Av. Malvarrosa, 98",
+        "lat": 39.48119559358,
+        "log": -0.32793699352695
+    },
+    {
+        "id": 102,
+        "tipo": 5,
+        "direccion": "Juan de Garay, 25",
+        "lat": 39.454783875067,
+        "log": -0.39562844452973
+    },
+    {
+        "id": 103,
+        "tipo": 5,
+        "direccion": "Vicente Maroto, 1",
+        "lat": 39.464765470801,
+        "log": -0.39595214721624
+    }
+]

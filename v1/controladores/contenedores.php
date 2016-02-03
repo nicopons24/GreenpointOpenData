@@ -3,12 +3,13 @@
 class contenedores
 {
 
-    const URL = "http://mapas.valencia.es/lanzadera/opendata/res_contenedor/JSON";
 
+    const URL_contenedores = "C:/xampp/htdocs/GreenpointOpenData/v1/jsoncontenedores.json";
     const ORGANICO = 1;
     const CARTON = 2;
     const PLASTICO = 3;
     const VIDRIO = 4;
+    const ORGANICOT = 7;
 
     public static function get($parametros)
     {
@@ -16,8 +17,8 @@ class contenedores
         $longUser = $parametros[1];
         $distancia = $parametros[2];
         $tipo = $parametros[3];
-        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL);
 
+        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_contenedores);
         return [
             "contenedores" => self::obtenerInformacionContenedores($contenedores, $tipo, $latUser, $longUser, $distancia)
         ];
@@ -28,15 +29,14 @@ class contenedores
         $contenedores = array();
         for ($i = 0; $i < count($array); $i++) {
             $contenedor = $array[$i];
-            $idTipo = self::obtenerTipo($contenedor->properties->tipo);
+            $idTipo = $contenedor->tipo;
             if ($tipo == $idTipo) {
-                $lat = $contenedor->geometry->coordinates[1];
-                $long = $contenedor->geometry->coordinates[0];
-                $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-                if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
-                    $idContenedor = $i + 1;
-                    $calle = self::obtenerDireccion($contenedor->properties->tipovia, $contenedor->properties->calleempre, $contenedor->properties->numportal);
-                    $c = new Contedor($idContenedor, $idTipo, $calle, $latlon['lat'], $latlon['lon']);
+                $lat = $contenedor->lat;
+                $long = $contenedor->log;
+                if (($distance = Calculos::obtenerCalculos()->getDistance($lat, $long, $latUser, $longUser)) < $distancia) {
+                    $idContenedor = $i;
+                    $calle = $contenedor->direccion;
+                    $c = new Contedor($idContenedor, $idTipo, $calle, $lat, $long);
                     array_push($contenedores, $c);
                 }
             }
@@ -50,6 +50,9 @@ class contenedores
         $tipos = array('RESIDUOS URBANOS', 'PAPEL CARTON', 'ENVASES LIGEROS', 'VIDRIO');
         $valor = array(self::ORGANICO, self::CARTON, self::PLASTICO, self::VIDRIO);
         for ($i = 0; $i < count($tipos); $i++) {
+            if($tipo=='RESIDUOS URBANOS T'){
+                return 1;
+            }
             if ($tipo == $tipos[$i]) {
                 return $valor[$i];
             }

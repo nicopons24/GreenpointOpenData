@@ -2,7 +2,8 @@
 
 class pilas
 {
-    const URL= "http://mapas.valencia.es/lanzadera/opendata/res_pilas/JSON";
+
+    const URL_pilas = "C:/xampp/htdocs/GreenpointOpenData/v1/jsonpilas.json";
     const TIPO = 6;
 
     public static function get($parametros)
@@ -10,7 +11,7 @@ class pilas
         $latUser = $parametros[0];
         $longUser = $parametros[1];
         $distancia = $parametros[2];
-        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL);
+        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_pilas);
         return [
             "contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
         ];
@@ -21,13 +22,12 @@ class pilas
         $contenedores = array();
         for ($i = 0; $i < count($array); $i++) {
             $pilas = $array[$i];
-            $lat = $pilas->geometry->coordinates[1];
-            $long = $pilas->geometry->coordinates[0];
-            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-            if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
+            $lat = $pilas->lat;
+            $long = $pilas->log;
+            if (($distance = Calculos::obtenerCalculos()->getDistance($lat,$long, $latUser, $longUser)) < $distancia) {
                 $id = $i + 1;
-                $direccion = $pilas->properties->direccion;
-                $c = new Contedor($id, self::TIPO, $direccion, $latlon['lat'], $latlon['lon']);
+                $direccion = $pilas->direccion;
+                $c = new Contedor($id, self::TIPO, $direccion, $lat,$long);
                 array_push($contenedores, $c);
             }
         }

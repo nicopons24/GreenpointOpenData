@@ -2,7 +2,8 @@
 
 class aceite
 {
-    const URL = "http://mapas.valencia.es/lanzadera/opendata/res_aceite/JSON";
+
+    const URL_aceite = "C:/xampp/htdocs/GreenpointOpenData/v1/jsonaceite.json";
     const TIPO = 5;
 
     public static function get($parametros)
@@ -11,7 +12,7 @@ class aceite
         $longUser = $parametros[1];
         $distancia = $parametros[2];
 
-        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL);
+        $contenedores = Calculos::obtenerCalculos()->getJSONFromUrl(self::URL_aceite);
         return [
             "contenedores" => self::obtenerInformacionContenedores($contenedores, $latUser, $longUser, $distancia)
         ];
@@ -22,13 +23,12 @@ class aceite
         $contenedores = array();
         for ($i = 0; $i < count($array); $i++) {
             $aceite = $array[$i];
-            $lat = $aceite->geometry->coordinates[1];
-            $long = $aceite->geometry->coordinates[0];
-            $latlon = Calculos::obtenerCalculos()->coordenadas($lat, $long, 30);
-            if (($distance = Calculos::obtenerCalculos()->getDistance($latlon['lat'], $latlon['lon'], $latUser, $longUser)) < $distancia) {
+            $lat = $aceite->lat;
+            $long = $aceite->long;
+            if (($distance = Calculos::obtenerCalculos()->getDistance($lat, $long, $latUser, $longUser)) < $distancia) {
                 $id = $i + 1;
-                $direccion = $aceite->properties->direccion;
-                $c = new Contedor($id, self::TIPO, $direccion, $latlon['lat'], $latlon['lon']);
+                $direccion = $aceite->direccion;
+                $c = new Contedor($id, self::TIPO, $direccion, $lat, $long);
                 array_push($contenedores, $c);
             }
         }
